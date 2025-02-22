@@ -20,7 +20,7 @@ TEST_RAM=$(($RAM_SIZE * 70 / 100 ))
 echo "Testing ${TEST_RAM}MB RAM using memtester..." | tee -a "$LOGFILE"
 
 # Run memtester and log results
-sudo memtester "${TEST_RAM}M" 1 2>&1 | tee -a "$LOGFILE"
+memtester "${TEST_RAM}M" 1 2>&1 | tee -a "$LOGFILE"
 
 echo "Checking ECC error logs..." | tee -a "$LOGFILE"
 
@@ -56,7 +56,7 @@ fi
 echo "Mapping DIMM slots to physical hardware..." | tee -a "$LOGFILE"
 
 # Get physical memory slots using dmidecode
-sudo dmidecode --type memory | tee -a "$LOGFILE"
+dmidecode --type memory | tee -a "$LOGFILE"
 
 echo "===== ECC RAM Test Completed on $(date) =====" | tee -a "$LOGFILE"
 
